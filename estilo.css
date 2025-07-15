@@ -1,1 +1,53 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff0f5;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
 
+h1 {
+  text-align: center;
+  color: #d63384;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.curso {
+  display: flex;
+  justify-content: center;
+}
+
+.boton-curso {
+  background-color: #ffc0cb;
+  border: 2px solid #d63384;
+  color: #000;
+  padding: 15px;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+.boton-curso:hover {
+  background-color: #ffb6c1;
+}
+
+.boton-curso.aprobado {
+  background-color: #d63384;
+  color: white;
+  text-decoration: line-through;
+}
+
+.boton-curso:disabled {
+  background-color: #f3f3f3;
+  color: #aaa;
+  border-style: dashed;
+  cursor: not-allowed;
+}
