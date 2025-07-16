@@ -24,7 +24,7 @@ const cursos = [
   { id: "personalidad", nombre: "Psicología de la Personalidad", depende: [] },
   { id: "entrevista", nombre: "Taller de Entrevista", depende: ["tallergrupal"] },
 
-  // Puedes continuar el resto siguiendo este formato...
+  // Puedes continuar el resto siguiendo este mismo patrón...
 ];
 
 const malla = document.getElementById("malla");
@@ -46,22 +46,24 @@ function crearCurso(curso) {
   boton.addEventListener("click", () => {
     boton.classList.add("aprobado");
     boton.disabled = true;
-
-    document.querySelectorAll(".boton-curso").forEach(b => {
-      if (!b.disabled && !b.classList.contains("aprobado")) return;
-      const dependencias = JSON.parse(b.dataset.dependencias || "[]");
-      const aprobadas = dependencias.every(id => {
-        const depBtn = document.querySelector(.boton-curso[data-id='${id}']);
-        return depBtn?.classList.contains("aprobado");
-      });
-
-      if (aprobadas) {
-        b.disabled = false;
-      }
-    });
+    actualizarCursos();
   });
 
   malla.appendChild(clone);
+}
+
+function actualizarCursos() {
+  document.querySelectorAll(".boton-curso").forEach(b => {
+    if (b.classList.contains("aprobado")) return;
+    const dependencias = JSON.parse(b.dataset.dependencias || "[]");
+    const aprobadas = dependencias.every(id => {
+      const depBtn = document.querySelector(.boton-curso[data-id='${id}']);
+      return depBtn && depBtn.classList.contains("aprobado");
+    });
+    if (aprobadas) {
+      b.disabled = false;
+    }
+  });
 }
 
 cursos.forEach(crearCurso);
