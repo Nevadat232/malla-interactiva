@@ -1,53 +1,76 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #fff0f5;
-  color: #333;
+:root {
+  --color-primario-1: #D4C1EC;
+  --color-primario-2: #F7C4C4;
+  --color-aprobado: #A8E6CF;
+  --texto: #333;
+  --fondo: #fafafa;
+  --fuente: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--fondo);
+  color: var(--texto);
+  font-family: var(--fuente);
+}
+
+header {
+  text-align: center;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
 }
 
 h1 {
-  text-align: center;
-  color: #d63384;
+  font-size: 1.8rem;
 }
 
-.grid {
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.grid-malla {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 15px;
-  padding: 20px;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .curso {
-  display: flex;
-  justify-content: center;
+  perspective: 600px;
 }
 
 .boton-curso {
-  background-color: #ffc0cb;
-  border: 2px solid #d63384;
-  color: #000;
-  padding: 15px;
   width: 100%;
-  border-radius: 10px;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 0.9rem;
   cursor: pointer;
-  font-weight: bold;
-  transition: all 0.2s ease-in-out;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  background-color: var(--color-primario-1);
+  color: var(--texto);
 }
 
-.boton-curso:hover {
-  background-color: #ffb6c1;
-}
-
-.boton-curso.aprobado {
-  background-color: #d63384;
-  color: white;
-  text-decoration: line-through;
+.boton-curso:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
 }
 
 .boton-curso:disabled {
-  background-color: #f3f3f3;
-  color: #aaa;
-  border-style: dashed;
+  opacity: 0.5;
   cursor: not-allowed;
+}
+
+.boton-curso.aprobado {
+  background-color: var(--color-aprobado);
+  color: #065f46;
 }
