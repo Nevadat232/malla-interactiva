@@ -24,7 +24,7 @@ const cursos = [
   { id: "personalidad", nombre: "Psicología de la Personalidad", depende: [] },
   { id: "entrevista", nombre: "Taller de Entrevista", depende: ["tallergrupal"] },
 
-  // Puedes continuar el resto siguiendo este mismo patrón...
+
 ];
 
 const malla = document.getElementById("malla");
